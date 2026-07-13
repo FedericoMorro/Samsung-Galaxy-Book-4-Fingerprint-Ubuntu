@@ -1,13 +1,26 @@
-Package: libfprint-2-2
 Source: libfprint
-Version: 1:1.94.10-1
-Architecture: amd64
-Maintainer: Shubham <shubham@unknown>
-Installed-Size: 918
-Depends: libc6 (>= 2.38), libglib2.0-0t64 (>= 2.68.0), libgudev-1.0-0 (>= 146), libgusb2 (>= 0.3.3), libpixman-1-0 (>= 0.30.0), libssl3t64 (>= 3.0.0)
 Section: libs
 Priority: optional
-Multi-Arch: same
+Maintainer: Shubham <shubham@unknown>
+Rules-Requires-Root: no
+Build-Depends:
+ debhelper-compat (= 13),
+Standards-Version: 4.7.2
 Homepage: <insert the upstream URL, if relevant>
+#Vcs-Browser: https://salsa.debian.org/debian/libfprint
+#Vcs-Git: https://salsa.debian.org/debian/libfprint.git
+
+Package: libfprint-dev
+Architecture: any
+Depends: libfprint-2-2 (= ${binary:Version}), ${misc:Depends}
+Description: Development files for libfprint
+ Development headers and pkg-config files for libfprint.
+
+Package: libfprint-2-2
+Architecture: any
+Multi-Arch: same
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
 Description: <insert up to 60 chars description>
  <Insert long description, indented with spaces.>

@@ -1,5 +1,8 @@
 # Samsung Galaxy Book 4 Fingerprint Fix (Ubuntu)
 
+**Working in Ubuntu 26.04**
+
+
 ## Overview
 
 This repository provides a working solution to enable the fingerprint sensor on Samsung Galaxy Book 4 devices running Ubuntu.
@@ -175,7 +178,7 @@ libfprint-2.so.2 => /usr/lib/x86_64-linux-gnu/libfprint-2.so.2
 * This is **experimental support**
 * Not officially included in upstream libfprint
 * May break after system updates
-* Works best on Ubuntu 22.04 / 24.04
+* Works best on Ubuntu 22.04 / 24.04 / 26.04
 
 ---
 
@@ -206,6 +209,32 @@ sudo systemctl restart fprintd
 
 ---
 
+## Building from Source
+
+To rebuild the `.deb` packages from source:
+
+### Build Dependencies
+
+```bash
+sudo apt install -y \
+  meson ninja-build debhelper debhelper-compat \
+  libglib2.0-dev libgusb-dev libssl-dev libpixman-1-dev \
+  libgudev-1.0-dev libudev-dev libusb-1.0-0-dev \
+  libgirepository1.0-dev gobject-introspection
+```
+
+### Build Steps
+
+```bash
+git clone https://gitlab.freedesktop.org/libfprint/libfprint.git
+cd libfprint
+dpkg-buildpackage -us -uc -b
+```
+
+The resulting `.deb` files will be in the parent directory.
+
+---
+
 ## Contributing
 
 If you have:
@@ -226,10 +255,6 @@ Use at your own risk.
 ---
 
 ## Keywords
-Samsung Galaxy Book 4 Ubuntu fingerprint fix  
+Samsung Galaxy Book 4 Ubuntu 26.04 fingerprint fix  
 Linux fingerprint Samsung laptop  
-libfprint Galaxy Book 4  
-
-## Author
-
-Maintained by: Shashank
+libfprint Galaxy Book 4
